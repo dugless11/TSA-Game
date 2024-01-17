@@ -18,6 +18,9 @@ func _process(delta):
 	pass
 "
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bihay"]
+size = Vector2(16, 6)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_t0te4"]
 atlas = ExtResource("1_ip3kf")
 region = Rect2(0, 0, 24, 24)
@@ -111,24 +114,23 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pno6e"]
 size = Vector2(17.5, 7)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bihay"]
-size = Vector2(16, 6)
-
 [node name="Player" type="Node2D"]
 script = SubResource("GDScript_h86jn")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="Body" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-3, 10)
+shape = SubResource("RectangleShape2D_bihay")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 position = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_jexq3")
 animation = &"Jump"
 frame_progress = 0.266567
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="CharacterBody2D"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Hitbox"]
 position = Vector2(-3, 10)
 shape = SubResource("RectangleShape2D_pno6e")
-
-[node name="Body" type="CollisionShape2D" parent="."]
-position = Vector2(-3, 10)
-shape = SubResource("RectangleShape2D_bihay")
