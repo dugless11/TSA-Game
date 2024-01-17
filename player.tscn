@@ -1,0 +1,134 @@
+[gd_scene load_steps=18 format=3 uid="uid://cxp8f2d8acux1"]
+
+[ext_resource type="Texture2D" uid="uid://co4pld7mx4cpx" path="res://Spritesheets/jump.png" id="1_ip3kf"]
+[ext_resource type="Texture2D" uid="uid://lgk4xe4cpxi6" path="res://Spritesheets/concept art_ (1).png" id="2_jh24o"]
+
+[sub_resource type="GDScript" id="GDScript_h86jn"]
+resource_name = "Player.gd"
+script/source = "extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0te4"]
+atlas = ExtResource("1_ip3kf")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31mbp"]
+atlas = ExtResource("1_ip3kf")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wh3lv"]
+atlas = ExtResource("1_ip3kf")
+region = Rect2(0, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5weh"]
+atlas = ExtResource("1_ip3kf")
+region = Rect2(0, 72, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ws1dm"]
+atlas = ExtResource("1_ip3kf")
+region = Rect2(0, 96, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lb6b1"]
+atlas = ExtResource("1_ip3kf")
+region = Rect2(0, 120, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l8lux"]
+atlas = ExtResource("1_ip3kf")
+region = Rect2(0, 144, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8sl0"]
+atlas = ExtResource("1_ip3kf")
+region = Rect2(0, 168, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_skhae"]
+atlas = ExtResource("1_ip3kf")
+region = Rect2(0, 192, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mimvk"]
+atlas = ExtResource("2_jh24o")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vby8b"]
+atlas = ExtResource("2_jh24o")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jexq3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0te4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31mbp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wh3lv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q5weh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ws1dm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lb6b1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l8lux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s8sl0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_skhae")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mimvk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vby8b")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pno6e"]
+size = Vector2(17.5, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bihay"]
+size = Vector2(16, 6)
+
+[node name="Player" type="Node2D"]
+script = SubResource("GDScript_h86jn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 1)
+sprite_frames = SubResource("SpriteFrames_jexq3")
+animation = &"Jump"
+frame_progress = 0.266567
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-3, 10)
+shape = SubResource("RectangleShape2D_pno6e")
+
+[node name="Body" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 10)
+shape = SubResource("RectangleShape2D_bihay")
