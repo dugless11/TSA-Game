@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bdxk211xf0o2n"]
 
-[ext_resource type="PackedScene" uid="uid://cxp8f2d8acux1" path="res://player.tscn" id="1_dof87"]
+[ext_resource type="PackedScene" uid="uid://mh8le1hgloq8" path="res://fox.tscn" id="1_dof87"]
 
 [node name="Game" type="Node2D"]
 
@@ -8,4 +8,6 @@
 
 [node name="Level" type="Node2D" parent="."]
 
-[node name="Player" parent="Level" instance=ExtResource("1_dof87")]
+[node name="CharacterBody2D" parent="Level" instance=ExtResource("1_dof87")]
+position = Vector2(101, 34)
+scale = Vector2(4, 4)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://mh8le1hgloq8"]
+[gd_scene load_steps=19 format=3 uid="uid://mh8le1hgloq8"]
 
 [ext_resource type="Texture2D" uid="uid://co4pld7mx4cpx" path="res://Spritesheets/jump.png" id="1_i8r1y"]
 [ext_resource type="Texture2D" uid="uid://lgk4xe4cpxi6" path="res://Spritesheets/concept art_ (1).png" id="2_jb5qx"]
@@ -8,12 +8,18 @@ resource_name = "fox.gd"
 script/source = "extends CharacterBody2D
 
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const SPEED = 30.0
+const JUMP_VELOCITY = -40.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
-
+func _ready():
+	$AnimatedSprite2D.play(\"Idle\")
+	print(\"hi\");
+	print($\".\".position.x)
+	print($\".\".position.y)
+	#get_tree().no
+	pass
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -21,22 +27,39 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed(\"ui_accept\") and is_on_floor():
+	if Input.is_action_just_pressed(\"up\") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis(\"ui_left\", \"ui_right\")
+	var direction = Input.get_axis(\"left\", \"right\")
 	if direction:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-
+	if $\".\".position.y>576:
+		$\".\".position.y = 0;
+	if $\".\".position.y<0:
+		$\".\".position.y = 576;
+	if $\".\".position.x>1024:
+		$\".\".position.x = 0;
+	if $\".\".position.x<0:
+		$\".\".position.x = 1024; 
+	print(velocity)
 	move_and_slide()
+
+
+#func _on_animated_sprite_2d_ready():
+	#get_tree().get_node(\"AnimatedSprite2D\").play(\"Walk\")
+	pass # Replace with function body.
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bihay"]
 size = Vector2(16, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7dr4"]
+atlas = ExtResource("2_jb5qx")
+region = Rect2(24, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t0te4"]
 atlas = ExtResource("1_i8r1y")
@@ -84,6 +107,14 @@ region = Rect2(24, 0, 24, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jexq3"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7dr4")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_t0te4")
@@ -135,17 +166,16 @@ size = Vector2(17.5, 7)
 script = SubResource("GDScript_bdulw")
 
 [node name="Body" type="CollisionShape2D" parent="."]
-position = Vector2(-3, 10)
 shape = SubResource("RectangleShape2D_bihay")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, 1)
+position = Vector2(3, -9)
 sprite_frames = SubResource("SpriteFrames_jexq3")
-animation = &"Jump"
-frame_progress = 0.266567
+animation = &"Idle"
 
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(-3, 10)
 shape = SubResource("RectangleShape2D_pno6e")
+
+[node name="Camera2D" type="Camera2D" parent="."]
