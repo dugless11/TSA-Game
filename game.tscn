@@ -10,4 +10,3 @@
 
 [node name="CharacterBody2D" parent="Level" instance=ExtResource("1_dof87")]
 position = Vector2(101, 34)
-scale = Vector2(4, 4)

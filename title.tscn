@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bdii11qiqis1k"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.382
+anchor_top = 0.411
+anchor_right = 0.569
+anchor_bottom = 0.51
+offset_left = -0.16803
+offset_top = 0.263992
+offset_right = 0.343994
+offset_bottom = 0.23996
