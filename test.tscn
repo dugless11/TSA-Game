@@ -8,8 +8,8 @@ position = Vector2(-2, 0)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("6_np0e4")]
 position = Vector2(306, 53)
-max_spd = 100.0
-jump = 450.0
+max_spd = 200.0
+jump = 300.0
 max_jump = -500.0
 
 [node name="TileMap" parent="." instance=ExtResource("2_dgpkl")]

@@ -18,7 +18,7 @@ var time_since_last_jump = 0.0
 var const_grav_acel = 5.0
 var terminal_velo = 1000
 var min_jump = 10
-var loop = true
+var loop = false
 # Declare member variables here. Examples:
 # var a = 2
 # var b = \"text\"
@@ -128,9 +128,9 @@ func dies():
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bihay"]
 size = Vector2(16, 6)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g7dr4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ll01k"]
 atlas = ExtResource("2_jb5qx")
-region = Rect2(24, 0, 24, 24)
+region = Rect2(24, 0, 18, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t0te4"]
 atlas = ExtResource("1_i8r1y")
@@ -180,7 +180,7 @@ region = Rect2(24, 0, 24, 24)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_g7dr4")
+"texture": SubResource("AtlasTexture_ll01k")
 }],
 "loop": true,
 "name": &"Idle",
@@ -234,22 +234,26 @@ animations = [{
 size = Vector2(17.5, 7)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+position = Vector2(-12, 43)
 scale = Vector2(4, 4)
 script = SubResource("GDScript_bdulw")
 
 [node name="Body" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 0)
 shape = SubResource("RectangleShape2D_bihay")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(3, -9)
+position = Vector2(0, -9)
 sprite_frames = SubResource("SpriteFrames_jexq3")
 animation = &"Idle"
 
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-3, 0)
 shape = SubResource("RectangleShape2D_pno6e")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(-3, 0)
 limit_smoothed = true
 position_smoothing_enabled = true
