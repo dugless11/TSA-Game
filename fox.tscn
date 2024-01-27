@@ -51,10 +51,10 @@ func _physics_process(delta):
 		pass
 	#facing dir & movement
 	if x_in > 0:
-		$AnimatedSprite2D.flip_h = true
+		$AnimatedSprite2D.flip_h = false
 		accel(x_in)
 	elif x_in<0:
-		$AnimatedSprite2D.flip_h = false
+		$AnimatedSprite2D.flip_h = true
 		accel(x_in)
 	else:
 		fric()
@@ -71,21 +71,23 @@ func _physics_process(delta):
 		time_since_last_jump = 0
 	#jump
 	if Input.is_action_just_pressed(\"up\") and is_on_floor():
-		#print(\"we jump\")
+		print(\"we jump\")
 		$AnimatedSprite2D.play(\"Jump\")
+		print(\"ani play\")
 		velo.y -= jump
 		time_since_last_jump = 0
 	elif Input.is_action_just_pressed(\"up\") and num_jumps>0:
-		#print(\"we jump in the air\")
+		print(\"we jump in the air\")
 		#$AnimatedSprite2D.play(\"Double Jump\")
 		velo.y = -jump
 		time_since_last_jump = 0
 		num_jumps -= 1
 	if Input.is_action_just_released(\"up\") and velo.y < -min_jump:
-		#print(\"we tiny jump\")
+		print(\"we tiny jump\")
 		$AnimatedSprite2D.play(\"Jump\")
 		velo.y = move_toward(velo.y,-min_jump,50)
 	if not is_on_floor() and Input.is_action_just_pressed(\"down\"):
+		print(\"we pound\")
 		velo.y += jump
 		num_jumps = max_jumps
 	#max spd
@@ -94,17 +96,21 @@ func _physics_process(delta):
 	elif velo.x <= -1*max_spd:
 		velo.x = -1*max_spd
 	if velo.y <= max_jump:
+		print(\"we hit max jump\")
 		velo.y = max_jump
 	if velo.y > terminal_velo:
+		print(\"we hit terminal speed\")
 		velo.y = terminal_velo
 	velocity = velo
-	move_and_slide()
+	if(move_and_slide()):
+		velo.y = 0;
+	#if(move_and_collide())
 func gravity():
 	#print(\"we graving\")
 	#$AnimatedSprite2D.play(\"Jump\")
 	velo.y += grav
 	if velo.y > 0:
-		velo.y += const_grav_acel+ pow(time_since_last_jump,2)/2
+		velo.y += const_grav_acel+ pow(time_since_last_jump,2)/20
 func fric():
 	velo.x = move_toward(velo.x,0,3)
 func accel(x_in):
