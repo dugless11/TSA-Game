@@ -216,7 +216,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Jump",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -245,7 +245,8 @@ shape = SubResource("RectangleShape2D_bihay")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -9)
 sprite_frames = SubResource("SpriteFrames_jexq3")
-animation = &"Idle"
+animation = &"Jump"
+frame_progress = 0.790787
 
 [node name="Hitbox" type="Area2D" parent="."]
 
