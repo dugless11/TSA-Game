@@ -6,7 +6,7 @@
 [sub_resource type="GDScript" id="GDScript_bdulw"]
 resource_name = "fox.gd"
 script/source = "extends CharacterBody2D
-class_name Player
+class_name fox
 @export var grav = 5.0
 @export var max_spd = 75.0
 @export var jump = 150.0
@@ -102,7 +102,7 @@ func _physics_process(delta):
 		print(\"we hit terminal speed\")
 		velo.y = terminal_velo
 	velocity = velo
-	if(move_and_slide()):
+	if(move_and_slide() and is_on_floor_only()):
 		velo.y = 0;
 	#if(move_and_collide())
 func gravity():
@@ -123,6 +123,7 @@ func dies():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bihay"]
@@ -214,7 +215,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_skhae")
 }],
-"loop": true,
+"loop": false,
 "name": &"Jump",
 "speed": 10.0
 }, {
@@ -245,8 +246,7 @@ shape = SubResource("RectangleShape2D_bihay")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -9)
 sprite_frames = SubResource("SpriteFrames_jexq3")
-animation = &"Jump"
-frame_progress = 0.790787
+animation = &"Walk"
 
 [node name="Hitbox" type="Area2D" parent="."]
 
