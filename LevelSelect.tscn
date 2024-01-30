@@ -1,0 +1,88 @@
+[gd_scene load_steps=10 format=3 uid="uid://cakfhk2t5bvp3"]
+
+[ext_resource type="Texture2D" uid="uid://dsdmhu1r6d8jv" path="res://Spritesheets/sprite_0.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://c4knsykmjwoek" path="res://Spritesheets/Screenshots/sprite_2.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://jp2tyo8vr81r" path="res://Spritesheets/Screenshots/sprite_1.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://b358p5232h30h" path="res://Spritesheets/Screenshots/sprite_3.png" id="4"]
+[ext_resource type="Script" path="res://LevelSelect.gd" id="5"]
+[ext_resource type="Texture2D" uid="uid://dyo8wwuvyswv8" path="res://Spritesheets/Screenshots/sprite_10.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://di1qx3rcbdu71" path="res://Spritesheets/Screenshots/sprite_11.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://b2gv644it510" path="res://Spritesheets/Screenshots/sprite_12.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://d31f7hrvsnurw" path="res://Spritesheets/Screenshots/sprite_9.png" id="9"]
+
+[node name="LevelSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Level Select"
+
+[node name="VSeparator2" type="VSeparator" parent="VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1")
+texture_disabled = ExtResource("9")
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="TextureButton2" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3")
+texture_disabled = ExtResource("6")
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer/HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="TextureButton3" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2")
+texture_disabled = ExtResource("7")
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer/HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="TextureButton4" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4")
+texture_disabled = ExtResource("8")
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Restart Progress?"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/TextureButton" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/TextureButton2" to="." method="_on_TextureButton2_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/TextureButton3" to="." method="_on_TextureButton3_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/TextureButton4" to="." method="_on_TextureButton4_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_Button_pressed"]

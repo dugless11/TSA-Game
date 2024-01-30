@@ -238,6 +238,9 @@ size = Vector2(17.5, 7)
 position = Vector2(-12, 43)
 scale = Vector2(4, 4)
 script = SubResource("GDScript_bdulw")
+max_spd = 200.0
+jump = 300.0
+max_jump = -500.0
 
 [node name="Body" type="CollisionShape2D" parent="."]
 position = Vector2(-3, 0)

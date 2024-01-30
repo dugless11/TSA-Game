@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://caot7h8v04ly2"]
 
-[ext_resource type="Script" path="res://Node2D.gd" id="1_csglc"]
+[ext_resource type="Script" path="res://Goal.gd" id="1_ch8b4"]
 [ext_resource type="Texture2D" uid="uid://bv2aek7sdj73v" path="res://Spritesheets/will o wisp.png" id="2_duch1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4fe7i"]
@@ -79,7 +79,7 @@ radius = 7.0
 
 [node name="Goal" type="Node2D"]
 scale = Vector2(0.5, 0.5)
-script = ExtResource("1_csglc")
+script = ExtResource("1_ch8b4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_k0r5m")

@@ -1,12 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://bdxk211xf0o2n"]
-
-[ext_resource type="PackedScene" uid="uid://mh8le1hgloq8" path="res://fox.tscn" id="1_dof87"]
+[gd_scene format=3 uid="uid://bdxk211xf0o2n"]
 
 [node name="Game" type="Node2D"]
-
-[node name="Title" type="Node2D" parent="."]
-
-[node name="Level" type="Node2D" parent="."]
-
-[node name="CharacterBody2D" parent="Level" instance=ExtResource("1_dof87")]
-position = Vector2(101, 34)
+position = Vector2(544, 405)
