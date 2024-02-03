@@ -8,9 +8,9 @@ resource_name = "fox.gd"
 script/source = "extends CharacterBody2D
 class_name Player
 @export var grav = 5.0
-@export var max_spd = 75.0
-@export var jump = 150.0
-@export var max_jump = -200.0
+@export var max_spd = 200.0
+@export var jump = 200.0
+@export var max_jump = -400.0
 @export var max_jumps = 1
 var num_jumps = max_jumps
 var velo = Vector2.ZERO
@@ -77,7 +77,6 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed(\"up\") and is_on_floor():
 		print(\"we jump\")
 		$AnimatedSprite2D.play(\"Jump\")
-		print(\"ani play\")
 		velo.y -= jump
 		time_since_last_jump = 0
 	elif Input.is_action_just_pressed(\"up\") and num_jumps>0:
