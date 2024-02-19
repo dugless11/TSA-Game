@@ -124,6 +124,8 @@ func dies():
 #func _process(delta):
 #	pass
 
+
+
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bihay"]
